@@ -30,10 +30,7 @@ jobs:
           
 
       - name: Install dependencies and build
-        env:
-          # Inyecta la variable que Astro leerá para configurar la ruta base.
-          # Esto anula cualquier problema de caché o de lectura de la config local.
-          BASE_URL: /acastrolab
+        
         run: |
           npm install
           npm run build
