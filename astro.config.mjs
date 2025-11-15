@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://AJCJ97.github.io/', 
+    site: 'https://ajcj97.github.io/acastrolab/', 
 	outDir: './dist',
 	trailingSlash: 'always',
 	output: 'static',
