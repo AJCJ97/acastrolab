@@ -39,7 +39,9 @@ body {
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
+	color: var(--color-text);
+	background-color: var(--color-background);
+	transition: background-color 0.3s, color 0.3s;
 	font-size: 20px;
 	line-height: 1.7;
 }
@@ -79,7 +81,7 @@ b {
 	font-weight: 700;
 }
 a {
-	color: var(--accent);
+	color: var(--color-primary);
 }
 a:hover {
 	color: var(--accent);
@@ -152,4 +154,9 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+.dark-mode {
+  --color-text: #f0f0f0;
+  --color-background: #1a1a1a;
+  --color-primary: #8ab4f8;
 }
