@@ -6,32 +6,28 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 
+// 🔑 CORRECCIÓN CLAVE: Usar Astro.resolve() para incluir la base URL (/acastrolab)
+const finalHref = Astro.resolve(href);
+
+
 // 1. Obtiene la ruta actual, limpiando la base URL si existiera.
+// Si Astro.url.pathname es /acastrolab/blog/ y BASE_URL es /acastrolab, pathname será /blog/
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
 
-// 2. Normaliza el 'pathname' (la URL actual) para que siempre termine en '/'
-// Esto lo hace consistente con tu configuración 'trailingSlash: always'
+// 2. Normaliza el 'pathname' actual para la comparación.
 const normalizedPathname = pathname.endsWith('/') ? pathname : pathname + '/';
 
-// 3. Normaliza el 'href' (el enlace que se pasa) para que siempre termine en '/'
+// 3. Normaliza el 'href' (prop) para la comparación.
 const normalizedHref = href.endsWith('/') ? href : href + '/';
 
-// 4. Lógica de Activación Corregida: Compara las rutas normalizadas.
-// Esto asegura que /blog y /blog/ sean tratadas como la misma ruta activa.
+// 4. Lógica de Activación: Compara las rutas después de eliminar la base URL.
 const isActive = normalizedHref === normalizedPathname;
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={finalHref} class:list={[className, { active: isActive }]} {...props}>
 	<slot />
 </a>
+
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
-	/* Mantén la lógica de estilo para resaltar el enlace activo */
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
-	}
+    /* ... */
 </style>
