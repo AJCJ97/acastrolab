@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const blog = defineCollection({
+const projects = defineCollection({
 	// Load Markdown and MDX files in the `src/content/projects/` directory.
 	loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
 	// Type-check frontmatter using a schema
@@ -12,7 +12,7 @@ const blog = defineCollection({
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
-			heroImage: image().optional(),
+			heroImage: image().optional()
 		}),
 });
 
