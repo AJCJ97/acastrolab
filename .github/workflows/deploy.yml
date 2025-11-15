@@ -1,0 +1,51 @@
+# .github/workflows/deploy.yml
+
+name: Deploy Astro to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Despliega solo desde la rama principal
+  workflow_dispatch: # Permite ejecutar el workflow manualmente
+
+# Establece permisos para el token GITHUB_TOKEN para la construcción
+permissions:
+  contents: read
+  pages: write # Permite que esta acción escriba en GitHub Pages
+  id-token: write # Permite generar el token de OIDC requerido
+
+jobs:
+  # Job 1: Construir y crear el artefacto (artifact)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Este paso sube la carpeta 'dist' para que el siguiente job la use
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # Job 2: Desplegar el artefacto a GitHub Pages
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Este job espera a que el job 'build' termine
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # ¡La acción nativa que elimina errores de token!
