@@ -285,6 +285,10 @@ cursor: pointer;
       --background-color: var(--color-background);
       padding: 1rem;
 	  text-align: end;
+	  border-bottom-color: var(--accent) !important;
+	  text-decoration: none;
+	  font-weight: bold;
+	  border-bottom: 4px solid transparent;
 	}
 }
 

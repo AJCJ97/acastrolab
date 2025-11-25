@@ -7,9 +7,6 @@ import DarkModeToggle from './DarkModeToggle.astro';
 <header>
 	<nav>
 		<HeaderLink translate="no" href="/" class="site-title-link"><h2 translate="no">{SITE_TITLE}</h2></HeaderLink>
-		<div class="internal-links">
-			
-		</div>
 		<div class="social-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/projects/">Projects</HeaderLink>
@@ -64,7 +61,7 @@ import DarkModeToggle from './DarkModeToggle.astro';
 		padding: 1em 0.5em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
-		text-decoration: none;
+		text-decoration: none !important;
 		font-weight: bold;
 	}
 	nav a.active {
@@ -101,8 +98,11 @@ import DarkModeToggle from './DarkModeToggle.astro';
 			justify-content: center;
 			line-height: 3.2em;
 			vertical-align: bottom;
+			text-decoration: none !important;
 		}
-		
+		a:-webkit-any-link {
+		text-decoration: none !important;
+		}
 		.social-links {
 			margin-left: 0.5em;
 			display:none;
