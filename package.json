@@ -15,8 +15,10 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.7",
     "font-awesome-astro": "^0.0.6",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.1.17"
   }
 }
