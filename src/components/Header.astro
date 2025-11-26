@@ -5,42 +5,38 @@ import DarkModeToggle from './DarkModeToggle.astro';
 ---
 
 <header>
-
-<nav class="relative bg-gray-800/50 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-white/10">
-  <div class="flex-shrink-0">
-            <h2 class="text-xl font-bold text-white tracking-wider">
-                <a href="/" class="site-title-link">{SITE_TITLE}</a>
-            </h2>
-        </div>
-	<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-			<HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/">Home</HeaderLink>
-			<HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/projects/">Projects</HeaderLink>
-			<HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/about/">About</HeaderLink> 
-			<HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/contact/">Contact</HeaderLink>
+	<nav>
+		<HeaderLink translate="no" href="/" class="site-title-link"><h2 translate="no">{SITE_TITLE}</h2></HeaderLink>
+		
+		<div class="social-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/projects/">Projects</HeaderLink>
+			<HeaderLink href="/about/">About</HeaderLink>
+			<HeaderLink href="/contact/">Contact</HeaderLink>
 			<DarkModeToggle />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+		</div>
+		
+		<button id="menuToggle" class="menu-btn">☰</button>
+	</nav>
 
-  <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
-    <div class="space-y-1 px-2 pt-2 pb-3">
-      <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-	  <HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/">Home</HeaderLink>
-	  <HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/projects/">Projects</HeaderLink>
-      <HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/about/">About</HeaderLink> 
-	  <HeaderLink aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white" href="/contact/">Contact</HeaderLink>
-	  <DarkModeToggle />
-    </div>
-  </el-disclosure>
-</nav>
-
+	<div id="mobileMenu" class="mobile-menu" style="display:none;">
+		<HeaderLink href="/">Home</HeaderLink>
+		<HeaderLink href="/projects/">Projects</HeaderLink>
+		<HeaderLink href="/about/">About</HeaderLink>
+		<HeaderLink href="/contact/">Contact</HeaderLink>
+		<DarkModeToggle />
+	</div>
 </header>
+
+<script>
+const btn = document.getElementById("menuToggle");
+const menu = document.getElementById("mobileMenu");
+
+btn.addEventListener("click", () => {
+    // Alterna entre 'none' (oculto) y 'flex' (visible)
+    menu.style.display = menu.style.display === "none" || menu.style.display === "" ? "flex" : "none";
+});
+</script>
 
 <style>
 	header {
@@ -64,6 +60,35 @@ import DarkModeToggle from './DarkModeToggle.astro';
 		align-items: center;
 		justify-content: space-between;
 	}
+	
+	/* ESTILOS DE ESCRITORIO POR DEFECTO */
+	.social-links,
+	.social-links a {
+		display: flex; /* Tabs visibles en escritorio */
+	}
+
+	.menu-btn {
+		display: none; /* Botón oculto en escritorio */
+	}
+	
+	.mobile-menu {
+		flex-direction: column;
+		width: 100%;
+		position: absolute; /* Para que quede debajo del nav */
+		background: var(--color-block-bg);
+		z-index: 10;
+		padding: 1em 0;
+		border-top: 1px solid rgba(var(--black), 0.1);
+	}
+	.mobile-menu a {
+		padding: 0.5em 1em;
+		text-decoration: none;
+		font-weight: bold;
+		color: var(--black);
+	}
+	
+
+	/* Estilos generales de enlaces */
 	nav a {
 		padding: 1em 0.5em;
 		color: var(--black);
@@ -76,43 +101,50 @@ import DarkModeToggle from './DarkModeToggle.astro';
 		font-weight: bold;
 	}
 	.site-title-link {
-		border-bottom: 0 !important; 
+		border-bottom: 0 !important;
 	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-	@media (min-width: 340px ) and (max-width: 720px) {
+	
+	@media (max-width: 720px) {
+		/* 1. VISIBILIDAD */
+		.social-links {
+			display: none; /* Oculta los tabs de escritorio en móvil */
+		}
+		.menu-btn {
+			display: block; /* Muestra el botón de menú en móvil */
+			font-size: 1.5em;
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--black);
+		}
+		
+		/* 2. AJUSTES DE DISEÑO PARA MÓVIL */
 		header {
-			padding: 0 0.5em; 
-			box-shadow: none; 
+			padding: 0 0.5em;
+			box-shadow: none;
 		}
 
 		nav {
-			width: 90%; 
-			align-items: flex-start; 
+			width: 90%;
+			align-items: center; /* Alinea los elementos verticalmente */
 		}
 		
 		h2 {
-			margin-right: 0.5em; 
-			font-size: 0.7em;
+			margin-right: 0.5em;
+			font-size: 1em; /* Ajustamos el tamaño del título */
 		}
-
+		
+		/* Puedes simplificar o eliminar las siguientes reglas si ya no son necesarias */
 		nav a {
-			padding: 1em 0.3em; 
+			padding: 1em 0.3em;
 			border-bottom-width: 2px;
-			font-size: 0.7em;
+			font-size: 0.9em;
 			justify-content: center;
-			line-height: 3.2em;
-			vertical-align: bottom;
-			text-decoration: none !important;
+			line-height: 2em;
+			vertical-align: middle;
 		}
 		a:-webkit-any-link {
 		text-decoration: none !important;
-		}
-		.social-links {
-			margin-left: 0.5em;
-			display:none;
 		}
 	}
 </style>
