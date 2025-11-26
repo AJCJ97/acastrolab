@@ -1,114 +1,51 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import Layout from '../../layouts/BlogPost.astro';
+import ProjectCard from '../../components/ProjectCard.jsx';// Importa el componente React
 
-const posts = (await getCollection('projects')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// Datos de ejemplo para tus proyectos de Data Analyst
+const projects = [
+    { 
+        id: 1, 
+        title: "Análisis de Propensión de Clientes", 
+        description: "Desarrollo de un modelo de clasificación con Python (Scikit-learn) para predecir qué clientes tienen mayor probabilidad de *churn*. El proyecto incluye limpieza de datos, selección de características y evaluación del modelo.", 
+        tools: ["Python", "Pandas", "Scikit-learn", "Jupyter"], 
+        link: "https://github.com/ajcj97/project-churn" 
+    },
+    { 
+        id: 2, 
+        title: "Dashboard de Rendimiento de Ventas", 
+        description: "Creación de un dashboard interactivo en Power BI para monitorear KPIs de ventas en tiempo real, permitiendo a los gerentes identificar cuellos de botella geográficos y por producto.", 
+        tools: ["Power BI", "SQL", "DAX"], 
+        link: "https://lookerstudio.google.com/embed/dashboard-sales-example" 
+    },
+    { 
+        id: 3, 
+        title: "Automatización ETL con SQL y Python", 
+        description: "Diseño y ejecución de un pipeline ETL (Extract, Transform, Load) para migrar datos de sistemas legados a un Data Warehouse. El script de transformación se ejecuta diariamente mediante un cron job.", 
+        tools: ["SQL", "Python", "Airflow (conceptos)"], 
+        link: "https://github.com/ajcj97/etl-pipeline-example" 
+    },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/projects/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title="Proyectos">
+    <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-10 text-center">
+        Portafolio de Proyectos
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+            // Usamos el componente React. El atributo client:load 
+            // lo hace interactivo si tuviera lógica (aunque esta versión es estática).
+            <ProjectCard 
+                title={project.title} 
+                description={project.description} 
+                tools={project.tools} 
+                link={project.link}
+                // client:load - Indica a Astro que cargue y active el JS de React
+                // Si no tiene JS interactivo, puedes quitarlo para mayor rendimiento.
+                client:load 
+            />
+        ))}
+    </div>
+</Layout>
