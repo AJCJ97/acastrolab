@@ -6,7 +6,7 @@ import DarkModeToggle from './DarkModeToggle.astro';
 
 <header>
 	<nav>
-		<HeaderLink translate="no" href="/" class="site-title-link"><h2 translate="no">{SITE_TITLE}</h2></HeaderLink>
+		<HeaderLink translate="no" href="/" class="site-title-link"><img src="/src/assets/logo.png" alt="" class="logo-img"/></HeaderLink>
 		
 		<div class="social-links">
 			<HeaderLink href="/">Home</HeaderLink>
@@ -39,6 +39,11 @@ btn.addEventListener("click", () => {
 </script>
 
 <style>
+	.logo-img {
+        height: 135px; 
+        width: auto;
+        display: block; 
+    }
 	header {
 		margin: 0;
 		padding: 0 1em;
@@ -90,7 +95,7 @@ btn.addEventListener("click", () => {
 
 	/* Estilos generales de enlaces */
 	nav a {
-		padding: 1em 0.5em;
+		padding-left: 0.5em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none !important;
