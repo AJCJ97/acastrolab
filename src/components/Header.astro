@@ -76,6 +76,10 @@ import DarkModeToggle from './DarkModeToggle.astro';
 		display: flex;
 	}
 	@media (min-width: 340px ) and (max-width: 720px) {
+		.logo-img {
+			display: block !important; /* Forzar que se muestre, anulando cualquier posible display: none */
+			height: 40px; /* Reducir un poco el tamaño para móvil si es necesario */
+		}
 		header {
 			padding: 0 0.5em; 
 			box-shadow: none; 
