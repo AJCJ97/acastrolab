@@ -12,6 +12,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props as P
 
 <html lang="en">
 	<head>
+		<link rel="icon" type="image/png" href="public/logo.png">
+		<link rel="shortcut icon" href="public/logo.png" type="image/x-icon">
+		<link rel="apple-touch-icon" href="public/logo.png">
 		<BaseHead title={title} description={description} />
 		<style>
 			main {
