@@ -8,81 +8,48 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 <!doctype html>
 <html lang="en">
 	<head>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ACastroLab | Data Analyst Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="bg-gray-900">
-				<div class="relative isolate px-6 pt-14 lg:px-8">
-					<div
-						aria-hidden="true"
-						class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-					>
-						<div
-							style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-							class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-						>
-						</div>
+			<section class="hero">
+				<h1>Hi, I'm Alberto — Data Analyst</h1>
+				<p>
+					I’m a Data Analyst with a Software Engineering background and 5+ years of experience working with 
+					cross-functional teams across the U.S. and the U.K. I specialize in SQL, Python, Power BI, and Excel, 
+					transforming raw information into insights that support business decisions.
+				</p>
+
+				<div class="cta-buttons">
+					<a href="about/" class="primary-btn">About Me</a>
+					<a href="Data_Analyst_Alberto_Castro_Jimenez.pdf" class="secondary-btn">Download CV</a>
+				</div>
+			</section>
+
+			<section class="projects-section">
+				<h2>Featured Projects</h2>
+
+				<div class="project-grid">
+					<div class="project-card">
+						<h3>Gym Admin Database</h3>
+						<p>SQL relational database for multi-location gym operations. Includes schema design, relationships, and queries.</p>
+						<a href="https://gitlab.com/acastro97/gym_bd_admin" target="_blank">View Project →</a>
 					</div>
-					<div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-						<div class="hidden sm:mb-8 sm:flex sm:justify-center">
-							<div
-								class="relative rounded-full px-3 py-1 text-sm/6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20"
-							>
-								Announcing our next round of funding. <a
-									href="#"
-									class="font-semibold text-indigo-400"
-									><span
-										aria-hidden="true"
-										class="absolute inset-0"></span>Read
-									more <span aria-hidden="true">&rarr;</span
-									></a
-								>
-							</div>
-						</div>
-						<div class="text-center">
-							<h1
-								class="text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl"
-							>
-								Data to enrich your online business
-							</h1>
-							<p
-								class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8"
-							>
-								Anim aute id magna aliqua ad ad non deserunt
-								sunt. Qui irure qui lorem cupidatat commodo.
-								Elit sunt amet fugiat veniam occaecat.
-							</p>
-							<div
-								class="mt-10 flex items-center justify-center gap-x-6"
-							>
-								<a
-									href="#"
-									class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-									>Get started</a
-								>
-								<a
-									href="#"
-									class="text-sm/6 font-semibold text-white"
-									>Learn more <span aria-hidden="true">→</span
-									></a
-								>
-							</div>
-						</div>
-					</div>
-					<div
-						aria-hidden="true"
-						class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-					>
-						<div
-							style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-							class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
-						>
-						</div>
+
+					<div class="project-card">
+						<h3>Python Database Generator</h3>
+						<p>CSV-to-database generator using Python, pandas, faker and randomization for synthetic datasets.</p>
+						<a href="https://gitlab.com/acastro97/random_users_list_generator" target="_blank">View Project →</a>
 					</div>
 				</div>
-			</div>
+			</section>
 		</main>
 		<Footer />
 	</body>

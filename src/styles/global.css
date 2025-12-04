@@ -5,7 +5,7 @@
  */
 
 :root {
-	--accent: #00f291;
+	--accent: #0d6efd;
 	--accent-dark: #e7e8eb;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -20,7 +20,7 @@
 .dark-mode {
  /* --- MODOS: OSCURO --- */
  --color-text: #f0f0f0; /* Texto claro */
- --color-links: #00f291; /* Mantener el acento vibrante o ajustarlo */
+ --color-links: #0d6efd; /* Mantener el acento vibrante o ajustarlo */
  --color-background: #1e1e1e; /* Fondo de HTML/BODY (el más oscuro) */
  --color-block-bg: #2c3e50; /* Fondo de bloques (Header/Main) */
  
@@ -169,6 +169,103 @@ display: none;
 font-size: 1.5rem;
 cursor: pointer;
 }
+
+
+/*Homepage css classes*/
+.hero {
+	max-width: 900px;
+	margin: 4rem auto;
+	text-align: center;
+	padding: 0 1rem;
+}
+
+.hero h1 {
+	font-size: 2.8rem;
+	font-weight: 800;
+	margin-bottom: 1rem;
+}
+
+.hero p {
+	font-size: 1.2rem;
+	color: #0d6efd;
+	line-height: 1.6;
+	max-width: 700px;
+	margin: auto;
+}
+
+.cta-buttons {
+	margin-top: 2rem;
+}
+
+.cta-buttons a {
+	padding: 0.9rem 1.8rem;
+	margin: 0.5rem;
+	font-size: 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 8px;
+	display: inline-block;
+}
+
+.primary-btn {
+	background: #0d6efd;
+	color: white;
+}
+
+.secondary-btn {
+	border: 2px solid #0d6efd;
+	color: #0d6efd;
+	background: white;
+}
+
+.projects-section {
+	max-width: 1000px;
+	margin: 4rem auto;
+	padding: 0 1rem;
+}
+
+.projects-section h2 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.5rem;
+}
+
+.project-card {
+	background: #0d6efd;
+	padding: 1.5rem;
+	border-radius: 12px;
+	border: 1px solid #0d6efd;
+	transition: all 0.2s;
+}
+
+.project-card:hover {
+	border-color: #0d6efd;
+	transform: translateY(-3px);
+}
+
+.project-card h3 {
+	margin: 0 0 0.6rem;
+}
+
+.project-card p {
+	color: #0d6efd;
+	font-size: 0.95rem;
+}
+
+.project-card a {
+	display: inline-block;
+	margin-top: 0.8rem;
+	color: white;
+	font-weight: 600;
+}
+
+
 @media (max-width: 720px) {
 	body {
 		font-family: "Atkinson", sans-serif;
