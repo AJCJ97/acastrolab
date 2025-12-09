@@ -384,6 +384,7 @@ cursor: pointer;
 	text-decoration: none;
 	border-radius: 8px;
 	display: block;
+	text-align: center;
 }
 
 .contact-me-links a:hover {
@@ -575,9 +576,29 @@ footer {
 			line-height: 2em;
 			vertical-align: middle;
 		}
+		
 		a:-webkit-any-link {
 		text-decoration: none !important;
 		}
+		footer {
+		padding: 2em 1em 6em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: var(--color-text) !important;
+		text-align: center;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
 }
 
 .sr-only {
