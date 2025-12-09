@@ -7,7 +7,7 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://ajcj97.github.io/',
-  base: '/acastrolab',
+  base: '/acanalytics',
   outDir: './dist',
   trailingSlash: 'always',
   output: 'static',
